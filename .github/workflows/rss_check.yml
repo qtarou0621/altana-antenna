@@ -3,7 +3,7 @@ name: Altana Antenna RSS Check
 on:
   schedule:
     # 渋滞を避けるため「3分, 18分, 33分, 48分」にズラして15分おきに実行
-    - cron: '5 * * * *'
+    - cron: '*/20 * * * *'
   workflow_dispatch:
 
 permissions:
