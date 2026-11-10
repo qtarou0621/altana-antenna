@@ -2,22 +2,22 @@ name: Altana Antenna RSS Check
 
 on:
   schedule:
-    # 15分おきに自動実行
-    - cron: '*/15 * * * *'
-  workflow_dispatch: # 手動テスト実行ボタンを有効化
+    # 渋滞を避けるため「3分, 18分, 33分, 48分」にズラして15分おきに実行
+    - cron: '3,18,33,48 * * * *'
+  workflow_dispatch:
 
 permissions:
-  contents: write # 既読ファイル(state.json)を上書き保存する権限
+  contents: write
 
 jobs:
   check-rss:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -34,5 +34,5 @@ jobs:
           git config user.name "Altana Antenna Bot"
           git config user.email "actions@github.com"
           git add state.json
-          git diff --staged --quiet || git commit -m "Update RSS state [skip ci]"
+          git diff --staged --quiet || git commit -m "Update RSS state"
           git push
