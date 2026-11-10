@@ -8,8 +8,10 @@ import requests
 
 # 監視したいRSSフィードのリスト
 FEEDS = {
-    "FF11公式トピックス": "http://www.playonline.com/ff11/polnews/news.xml",
-    # "きゅーちゃんYouTube": "https://www.youtube.com/feeds/videos.xml?channel_id=ここにチャンネルID",
+    "FF11公式 トピックス": "http://www.playonline.com/ff11/polnews/topics.xml",
+    "FF11公式 インフォメーション": "http://www.playonline.com/ff11/polnews/news.xml",
+    "FF11公式 開発・運営だより": "http://www.playonline.com/ff11/polnews/letter.xml",
+    "FF11公式 関連情報": "http://www.playonline.com/ff11/polnews/event.xml",
 }
 
 WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
